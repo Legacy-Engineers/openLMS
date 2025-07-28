@@ -5,7 +5,7 @@ FROM python:3.12-slim
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-ENV DJANGO_SETTINGS_MODULE=laundry_management.settings
+ENV DJANGO_SETTINGS_MODULE=openLMS.settings
 
 # Set work directory
 WORKDIR /app
@@ -46,4 +46,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
     CMD curl -f http://localhost:8000/health/ || exit 1
 
 # Run application
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "3", "--timeout", "120", "laundry_management.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "3", "--timeout", "120", "openLMS.wsgi:application"]
